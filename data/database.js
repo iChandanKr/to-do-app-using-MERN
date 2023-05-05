@@ -6,8 +6,8 @@ export const connectionDB = ()=>{
         useNewUrlParser: true,
         useUnifiedTopology: true,
     })
-    .then(() => {
-        console.log("connected to database");
+    .then((c) => {
+        console.log(`Database is connected with ${c.connection.host}`);
     })
     .catch((err) => {
         console.log(err);
