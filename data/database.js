@@ -12,4 +12,8 @@ export const connectionDB = ()=>{
     .catch((err) => {
         console.log(err);
     });
+
+    // mongoose.connect("mongodb://localhost:27017/backendAPI")
+    // .then(()=>console.log("connected to database"))
+    // .catch((err)=>console.log(err));
 };

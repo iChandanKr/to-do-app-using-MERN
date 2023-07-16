@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import { errMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
 
+
 export const app = express();
 config({
     path:'./data/config.env',
@@ -13,18 +14,22 @@ config({
 
 // using middlewares
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser()) 
 
+app.use(cors({
+    origin:"http://localhost:5173",
+    
+    methods:['GET','POST','PUT','DELETE'],
+    allowedHeaders:['Content-Type','Authorization'],        
+    credentials:true,
+}));
 
 //using routes
 app.use("/api/v1/users", userroute);
-app.use("/api/v1/task",taskroute)
+app.use("/api/v1/task",taskroute);
 
-app.use(cors({
-    origin:[process.env.FRONTEND_URL],
-    methods:['GET','POST','PUT','DELETE'],
-    credentials:true,
-}));
+
+
 
 
 

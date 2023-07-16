@@ -29,6 +29,7 @@ export const login = async (req, res, next) => {
 
 
 export const register = async (req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:5173');
     try {
         const { name, email, password } = req.body;
         let user = await User.findOne({ email });
@@ -61,7 +62,7 @@ export const logout = (req, res) => {
 
     }).json({
         success: true,
-        message: "you are logout",
+        message: "you are logged out!",
 
 
     })
